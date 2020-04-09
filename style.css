@@ -1,0 +1,204 @@
+--card-width: 90%;
+
+* {
+  box-sizing: border-box;
+}
+
+body::before {
+  content: '';
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url(assets/background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+body {
+  padding-right: 30px;
+  padding-left: 30px;
+  overflow: hidden;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-layer {
+  /* display: none; */
+  height: 100%;
+  transition: transform ease-in 0.5s;
+  z-index: 1;
+
+}
+
+.home-logo {
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin: 150px auto 0 auto;
+
+}
+
+#start-button {
+  margin: 100px auto 0 auto;
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.button {
+  transition: transform 0.4s ease, filter 0.7s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  -webkit-filter: drop-shadow(4px 4px 4px #222);
+  filter: drop-shadow(4px 4px 4px #222);
+}
+
+.button:active {
+  transform: translateY(4px);
+}
+
+.button:focus, #refresh-button:focus {
+    outline: none !important;
+}
+
+.absolute-centered {
+  width: 100%;
+  left: 50%
+  margin: -50%;
+  position: absolute;
+}
+
+.hud {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#game-logo {
+  max-width: 120px;
+  min-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+#refresh-button {
+  width: 60px;
+  height: auto;
+}
+
+#timer {
+  color: #fff;
+  font-family: 'Patua One', cursive;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+.game-layer {
+  height: 100%;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.cards-container {
+  width: 100%;
+  padding-top: 60%;
+  position: relative;
+  margin: 60px auto 100px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.background {
+  width: 90%;
+  height: 100%;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  /* border: 1px solid #707070; */
+  /* opacity: 0.12; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 3%;
+  justify-content: space-between;
+  align-content: space-between;
+  position: absolute;
+  top: 0;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 7px;
+  width: 22%;
+  height: 47%;
+  box-shadow: 6px 6px 29px -9px rgba(0,0,0,0.75);
+  transition: transform 0.2s ease;
+  position: relative;
+  background-color: transparent;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* .card:hover {
+  transform: scale(1.01);
+} */
+
+.turn {
+  transform: rotateY(180deg);
+  transition: transform 0.8s ease;
+
+}
+
+.card:active {
+  transform: translateY(1px);
+}
+
+.moves {
+  color: #fff;
+  font-size: 2rem;
+  font-family: 'Patua One', cursive;
+  text-align: center;
+}
+
+.face {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  display: relative;
+  position: absolute;
+}
+
+
+
+.back {
+  background-image: url(assets/default-front@2x.png);
+  backface-visibility: hidden;
+  /* display: none; */
+}
+
+.front {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
