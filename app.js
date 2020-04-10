@@ -55,6 +55,9 @@ backCards.forEach((item, index) => {
 
 timerID = setInterval(timerCounter, 1000);
 
+document.querySelector('.star-rating').innerHTML = `<span class="star">⭐</span>
+<span class="star">⭐</span>
+<span class="star">⭐</span>`
 }
 
 
