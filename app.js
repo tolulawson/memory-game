@@ -1,10 +1,11 @@
-const cards = ['assets/card-1@2x.png','assets/card-2@2x.png', 'assets/card-3@2x.png', 'assets/card-4@2x.png'];
+const cards = ['assets/1@2x.png','assets/2@2x.png', 'assets/3@2x.png', 'assets/4@2x.png','assets/5@2x.png','assets/6@2x.png', 'assets/7@2x.png', 'assets/8@2x.png'];
 
 let timerID;
 let mins = 0;
 let secs = 0;
 let clickRecord = [];
 let score = 0;
+let clickCount = 0;
 
 const timerCounter = function() {
   if (secs <= 59) {
@@ -46,7 +47,7 @@ const startGame = function(event) {
   });
 }
 
-let random = randomizeArr([0,0,1,1,2,2,3,3]);
+let random = randomizeArr([0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7]);
 
 backCards.forEach((item, index) => {
   item.style.backgroundImage = `url(${cards[random[index]]})`;
@@ -68,7 +69,7 @@ const turnCard = function(event) {
       if (clickRecord[0].previousElementSibling.style.backgroundImage !== clickRecord[1].previousElementSibling.style.backgroundImage) {
       clickRecord.forEach((item) => {
         function removeClass() {
-          item.parentElement.classList.remove('turn')
+          item.parentElement.classList.remove('turn');
         }
         setTimeout(removeClass, 1000);
       });
@@ -76,17 +77,34 @@ const turnCard = function(event) {
     }
     else {
       score++;
+      console.log(score);
     }
     clickRecord = [];
-    if (score > 3) {
+    if (score > 7) {
       clearInterval(timerID);
     }
   }
     event.target.parentElement.classList.add('turn');
+    // event.target.previousElementSibling.classList.add('open');
 
-    document.querySelector('#move-count').textContent = (parseInt(document.querySelector('#move-count').textContent) + 1).toString();
+    clickCount++;
+    document.querySelector('#move-count').textContent = clickCount.toString();
+
+    if (clickCount === 17) {
+      document.querySelector('.star-rating').lastElementChild.remove();
+    }
+
+    if (clickCount === 21) {
+      document.querySelector('.star-rating').lastElementChild.remove();
+    }
 
     }
+
+    // if (event.target.className.split(' ').includes('open')) {
+    //   // console.log(event.target.previousElementSibling.className);
+    //   event.preventDefault();
+    //   console.log(event.target);
+    // }
 
 }
 
